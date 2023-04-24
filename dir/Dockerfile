@@ -20,7 +20,6 @@ RUN chgrp -R 0 /some/directory && chmod -R g=u /some/directory
 
 # Which port will be available for the container once deployed ?
 EXPOSE 8080
-# Which command
-will be execute at the container startup ?
+# Which command will be execute at the container startup ?
 # / ! \ Il faut bien un espace entre chaque virgule et la suite, sinon j'ai l'impression que tout est collé et ça ne fonctionne pas.....
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
