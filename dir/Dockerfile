@@ -16,7 +16,7 @@ RUN yum install -y httpd httpd-tools
 
 # Right change as on Openshift we can't execute by default container with root uid, so we change the file rights to the container "root" as our user uid will be in this group
 # https://docs.openshift.com/container-platform/4.12/openshift_images/create-images.html#images-create-guide-openshift_create-images
-RUN chgrp -R 0 /some/directory && chmod -R g=u /some/directory
+RUN chgrp -R 0 /run && chmod -R g=u /run
 
 # Which port will be available for the container once deployed ?
 EXPOSE 8080
