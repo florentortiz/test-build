@@ -19,16 +19,13 @@ RUN yum install -y httpd httpd-tools
 RUN chgrp -R 0 /run && chmod -R g=u /run
 RUN chgrp -R 0 /etc/httpd/logs && chmod -R g=u /etc/httpd/logs
 
-# Test to bind port 80 on the container
+# To bind port 80 on the container
 RUN setcap cap_net_bind_service=+ep /usr/sbin/httpd
+EXPOSE 80
 
 # Change configuration to listen on port 8080 as openshift container can't use port bellow 1024
 #RUN sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
-#RUN cat /etc/httpd/conf/httpd.conf
-
-# Which port will be available for the container once deployed ?
 #EXPOSE 8080
-EXPOSE 80
 
 # Which command will be execute at the container startup ?
 # / ! \ Il faut bien un espace entre chaque virgule et la suite, sinon j'ai l'impression que tout est collé et ça ne fonctionne pas.....
