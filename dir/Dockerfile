@@ -18,6 +18,9 @@ RUN yum install -y httpd httpd-tools
 # https://docs.openshift.com/container-platform/4.12/openshift_images/create-images.html#images-create-guide-openshift_create-images
 RUN chgrp -R 0 /run && chmod -R g=u /run
 
+# Change configuration to listen on port 8080 as openshift container can't use port bellow 1024
+RUN sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/httpd.conf
+
 # Which port will be available for the container once deployed ?
 EXPOSE 8080
 # Which command will be execute at the container startup ?
