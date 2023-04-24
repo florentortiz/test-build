@@ -7,8 +7,8 @@ COPY . .
 # Some commande to try it
 RUN echo "toto" > /tmp/test.txt
 RUN touch /tmp/test_touch.txt
-RUN yum install -y httpd
+RUN yum install -y httpd httpd-tools
 # Which port will be available for the container once deployed ?
 EXPOSE 8080
 # Which command will be execute at the container startup ?
-CMD ["/usr/sbin/httpd","-DFOREGROUND"]
+CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
