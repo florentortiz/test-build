@@ -11,4 +11,4 @@ RUN yum install -y httpd
 # Which port will be available for the container once deployed ?
 EXPOSE 8080
 # Which command will be execute at the container startup ?
-CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+CMD ["/usr/sbin/httpd","-DFOREGROUND"]
