@@ -7,3 +7,7 @@ COPY . .
 # Some commande to try it
 RUN echo "toto" > /tmp/test.txt
 RUN touch /tmp/test_touch.txt
+# Which port will be available for the container once deployed ?
+EXPOSE 8080
+# Which command will be execute at the container startup ?
+CMD ["httpd","start"]
