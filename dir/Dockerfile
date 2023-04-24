@@ -19,6 +19,9 @@ RUN yum install -y httpd httpd-tools
 RUN chgrp -R 0 /run && chmod -R g=u /run
 RUN chgrp -R 0 /etc/httpd/logs && chmod -R g=u /etc/httpd/logs
 
+# Test to bind port 80 on the container
+RUN setcap cap_net_bind_service=+ep /usr/sbin/httpd
+
 # Change configuration to listen on port 8080 as openshift container can't use port bellow 1024
 #RUN sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 #RUN cat /etc/httpd/conf/httpd.conf
